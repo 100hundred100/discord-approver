@@ -88,6 +88,7 @@ DISCORD_TOKEN=xxx DISCORD_APPLICATION_ID=xxx node register-commands.mjs
 | `DISCORD_TOKEN` | Discord Bot トークン |
 | `DISCORD_PUBLIC_KEY` | Interaction 署名検証用公開鍵 |
 | `DISCORD_APPLICATION_ID` | Bot アプリケーション ID |
+| `MENTION_USER_ID` | 承認リクエスト時にメンションする Discord ユーザー ID |
 
 ### Local（環境変数 or `.env`）
 | 変数名 | 説明 |

@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Mac LaunchAgent — daemon を自動起動するための設定ファイル
+  使い方:
+    1. このファイルを編集して YOUR_HOME, YOUR_NODE_PATH, YOUR_PROJECT_PATH を実際のパスに書き換える
+    2. cp com.claude.remote.plist ~/Library/LaunchAgents/
+    3. launchctl load ~/Library/LaunchAgents/com.claude.remote.plist
+-->
 <plist version="1.0">
 <dict>
     <key>Label</key>
     <string>com.claude.remote</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/yasuaki/.nvm/versions/node/v22.17.0/bin/node</string>
-        <string>/Users/yasuaki/Work_Mar2026/discord-approver/local/daemon.mjs</string>
+        <string>/YOUR_HOME/.nvm/versions/node/vX.X.X/bin/node</string>
+        <string>/YOUR_PROJECT_PATH/discord-approver/local/daemon.mjs</string>
     </array>
     <key>WorkingDirectory</key>
-    <string>/Users/yasuaki/Work_Mar2026/discord-approver/local</string>
+    <string>/YOUR_PROJECT_PATH/discord-approver/local</string>
     <key>RunAtLoad</key>
     <true/>
     <key>KeepAlive</key>
@@ -22,9 +29,13 @@
     <key>EnvironmentVariables</key>
     <dict>
         <key>PATH</key>
-        <string>/Users/yasuaki/.nvm/versions/node/v22.17.0/bin:/usr/local/bin:/usr/bin:/bin</string>
+        <string>/YOUR_HOME/.nvm/versions/node/vX.X.X/bin:/usr/local/bin:/usr/bin:/bin</string>
         <key>HOME</key>
-        <string>/Users/yasuaki</string>
+        <string>/YOUR_HOME</string>
+        <key>WORKER_URL</key>
+        <string>https://your-worker.workers.dev</string>
+        <key>API_KEY</key>
+        <string>your-api-key-here</string>
     </dict>
 </dict>
 </plist>

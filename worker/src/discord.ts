@@ -176,7 +176,11 @@ export async function sendMessage(
 
 // --- 承認リクエスト（スレッド内に投稿） ---
 
-const MENTION_USER = '<@597453476578197518>';
+// 承認リクエスト時にメンションするユーザーID
+// 設定方法: wrangler secret put MENTION_USER_ID でセットし、sendApprovalMessage に env を渡すか
+// シンプルに下記の文字列を自分の Discord User ID に書き換えてデプロイしてください
+const MENTION_USER_ID = ''; // 例: '123456789012345678'
+const MENTION_USER = MENTION_USER_ID ? `<@${MENTION_USER_ID}>` : '';
 
 // ────────────────────────────────────────────────────────────────
 // Bash コマンドの日本語解説ジェネレーター
