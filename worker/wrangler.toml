@@ -1,0 +1,8 @@
+name = "claude-remote"
+main = "src/index.ts"
+compatibility_date = "2025-03-12"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "claude-remote"
+database_id = "a290829c-e75b-4099-962d-724e0a2e6be2"

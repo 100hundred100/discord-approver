@@ -1,0 +1,17 @@
+{
+  "name": "claude-remote-worker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:migrate": "wrangler d1 execute claude-remote --local --file=schema.sql",
+    "db:migrate:prod": "wrangler d1 execute claude-remote --remote --file=schema.sql"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250312.0",
+    "typescript": "^5.7.0",
+    "wrangler": "^4.0.0"
+  }
+}

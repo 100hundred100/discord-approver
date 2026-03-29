@@ -1,0 +1,10 @@
+{
+  "name": "claude-remote-local",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "daemon": "node daemon.mjs",
+    "test:hook": "echo '{\"tool_name\":\"Bash\",\"tool_input\":{\"command\":\"echo test\"}}' | node approve-hook.mjs"
+  }
+}

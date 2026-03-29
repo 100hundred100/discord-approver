@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.claude.remote</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/yasuaki/.nvm/versions/node/v22.17.0/bin/node</string>
+        <string>/Users/yasuaki/Work_Mar2026/discord-approver/local/daemon.mjs</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/yasuaki/Work_Mar2026/discord-approver/local</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/tmp/claude-remote-daemon.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/claude-remote-daemon.err</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/Users/yasuaki/.nvm/versions/node/v22.17.0/bin:/usr/local/bin:/usr/bin:/bin</string>
+        <key>HOME</key>
+        <string>/Users/yasuaki</string>
+    </dict>
+</dict>
+</plist>
