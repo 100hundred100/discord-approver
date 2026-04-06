@@ -173,12 +173,23 @@ Claude Code がツールを実行しようとする
    ```json
    {
      "hooks": {
-       "PreToolUse": [{ "matcher": "", "hooks": [{ "type": "command", "command": "node /path/to/local/approve-hook.mjs" }] }],
-       "PostToolUse": [{ "matcher": "", "hooks": [{ "type": "command", "command": "node /path/to/local/post-tool-hook.mjs" }] }]
+       "PreToolUse": [{ "matcher": "Bash|Edit|Write|NotebookEdit", "hooks": [{ "type": "command", "command": "/path/to/node /path/to/local/approve-hook.mjs" }] }],
+       "PostToolUse": [{ "matcher": "Bash|Edit|Write|NotebookEdit", "hooks": [{ "type": "command", "command": "/path/to/node /path/to/local/post-tool-hook.mjs" }] }]
      }
    }
    ```
-6. **Discord サーバー初期化** — `/setup` を Discord で実行
+   > ⚠️ `node` はフルパスで指定すること（例: `/Users/yourname/.nvm/versions/node/v22.x.x/bin/node`）。
+   > `node` コマンドが PATH にない環境では hook が起動しない。
+   > **Node.js v19 以上が必要**（`crypto.randomUUID()` を使用）。v18 以下では動作しない。
+
+6. **環境変数を `~/.zshenv` に設定**（全セッションで有効にするため）
+   ```bash
+   export WORKER_URL=https://your-worker.workers.dev
+   export API_KEY=your-api-key
+   ```
+   > `.zshrc` ではなく `.zshenv` に書くこと。Claude Code は非インタラクティブシェルで起動するため `.zshrc` が読まれない場合がある。
+
+7. **Discord サーバー初期化** — `/setup` を Discord で実行
 
 ---
 
@@ -188,3 +199,5 @@ Claude Code がツールを実行しようとする
 - Worker シークレットは `wrangler.toml` に書かない
 - チャンネル自動削除: カテゴリ内を常に最新 10 本に保つ（`pruneOldChannels`）
 - `/auto` モード: Worker 側では自動承認しない。`--permission-mode auto` で Claude 側が判断し、超えた操作のみ Discord に来る
+- hook の `node` コマンドは必ずフルパスで指定（Node.js v19+ 必須）
+- 環境変数 `WORKER_URL` / `API_KEY` は `~/.zshenv` に設定（`.zshrc` は非インタラクティブシェルで読まれないため不可）
