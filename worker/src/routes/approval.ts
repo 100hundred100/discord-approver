@@ -93,7 +93,8 @@ export async function handleCreateRequest(
       body.id,
       body.tool_name,
       body.tool_input ?? null,
-      body.working_dir ?? null
+      body.working_dir ?? null,
+      env.MENTION_USER_ID
     );
   }
 

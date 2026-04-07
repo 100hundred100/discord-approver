@@ -595,8 +595,10 @@ export async function sendApprovalMessage(
   requestId: string,
   toolName: string,
   toolInput: string | null,
-  workingDir: string | null = null
+  workingDir: string | null = null,
+  mentionUserId?: string
 ): Promise<void> {
+  const mentionUser = mentionUserId ? `<@${mentionUserId}>` : MENTION_USER;
   const truncatedInput = toolInput
     ? toolInput.length > 500
       ? toolInput.substring(0, 500) + '...'
@@ -632,7 +634,7 @@ export async function sendApprovalMessage(
   ];
 
   await sendMessage(botToken, threadId, {
-    content: `${MENTION_USER} Claudeの操作に承認が必要です`,
+    content: `${mentionUser} Claudeの操作に承認が必要です`,
     embeds: [
       {
         title: `🔧 ${summary}`,
